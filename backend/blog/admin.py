@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Law
+from .models import Law, Category
 # Register your models here.
 
 class LawAdmin(admin.ModelAdmin):
@@ -10,3 +10,6 @@ class LawAdmin(admin.ModelAdmin):
         return super(LawAdmin, self).save_model(request, obj, form, change)
 
 admin.site.register(Law, LawAdmin)
+
+
+admin.site.register(Category)
