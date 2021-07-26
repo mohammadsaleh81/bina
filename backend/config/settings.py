@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'ckeditor',
+    'rest_framework',
+    'django_filters',
 
     'blog.apps.BlogConfig',
 ]
@@ -145,3 +147,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+
+#drf settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ], 
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ]
+}

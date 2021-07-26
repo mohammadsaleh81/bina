@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
-from django.db.models.deletion import CASCADE, SET_NULL
+from django.db.models.deletion import CASCADE
 
 # Create your models here.
 class Law(models.Model):
@@ -11,7 +11,7 @@ class Law(models.Model):
 )
 
     title = models.CharField('عنوان', max_length=50)
-    description = RichTextField('متن')
+    description = RichTextField('متن', )
     poster = models.ImageField('تصویر', upload_to="images")
     status =models.BooleanField('وضعیت', choices = TRUE_FALSE_CHOICES)
     created = models.DateTimeField('تاریخ انتشار', auto_now_add=True)
