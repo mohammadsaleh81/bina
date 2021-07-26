@@ -1,5 +1,10 @@
 from django.contrib import admin
 from .models import Law, Category
+from django.utils.html import format_html
+
+admin.site.site_header = "مدیریت سامانه بینا"
+
+
 # Register your models here.
 
 class LawAdmin(admin.ModelAdmin):
