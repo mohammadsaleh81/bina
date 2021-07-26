@@ -27,3 +27,11 @@ def Taglist(request, tag):
     tags = Law.objects.filter(tags__name=tag)
     serializer = LawSeralizer(tags, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def Categorylist(request, category):
+    
+    category = Law.objects.filter(category__slug=category)
+    serializer = LawSeralizer(category, many=True)
+    return Response(serializer.data)

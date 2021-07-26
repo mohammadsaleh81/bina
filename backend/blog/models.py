@@ -18,7 +18,7 @@ class Law(models.Model):
     created = models.DateTimeField('تاریخ انتشار', auto_now_add=True)
     author =models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='نویسنده')
     slug = models.SlugField('لینک کوتاه',)
-    Category = models.ManyToManyField('Category', verbose_name='دسته بندی')
+    category = models.ManyToManyField('Category', verbose_name='دسته بندی')
     tags = TaggableManager(verbose_name="تگ")
 
     class Meta:
