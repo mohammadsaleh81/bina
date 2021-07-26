@@ -1,7 +1,9 @@
 from rest_framework import serializers
+from taggit_serializer.serializers import (TagListSerializerField,
+                                           TaggitSerializer)
 from .models import Law
 
-class LawSeralizer(serializers.ModelSerializer):
+class LawSeralizer(TaggitSerializer, serializers.ModelSerializer):
     def get_author(self, obj):
         return {
 			"username": obj.author.username,
@@ -10,6 +12,8 @@ class LawSeralizer(serializers.ModelSerializer):
 		}
     
     
+    tags = TagListSerializerField()
+
     author = serializers.SerializerMethodField('get_author')
     class Meta:
         model = Law

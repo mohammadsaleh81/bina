@@ -3,7 +3,7 @@ from .models import Law, Category
 # Register your models here.
 
 class LawAdmin(admin.ModelAdmin):
-    fields = ['title', 'poster', 'description', 'slug', 'status']
+    fields = ['title', 'poster', 'description', 'slug', 'status', 'tags']
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user

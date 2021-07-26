@@ -1,4 +1,5 @@
 from django.db import models
+from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from django.db.models.deletion import CASCADE
@@ -18,6 +19,7 @@ class Law(models.Model):
     author =models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='نویسنده')
     slug = models.SlugField('لینک کوتاه',)
     Category = models.ManyToManyField('Category', verbose_name='دسته بندی')
+    tags = TaggableManager(verbose_name="تگ")
 
     class Meta:
         verbose_name = 'قانون'

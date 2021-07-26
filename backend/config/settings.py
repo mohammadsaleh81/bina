@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'rest_framework',
     'django_filters',
+    'taggit',
+    'taggit_serializer',
 
     'blog.apps.BlogConfig',
 ]
@@ -152,10 +154,14 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.AllowAny'
     ], 
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ]
 }
+
+
+# taggit settings
+TAGGIT_CASE_INSENSITIVE = True
