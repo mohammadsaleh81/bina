@@ -11,5 +11,6 @@ router.register("Law",LawViweSet, basename='Law')
 urlpatterns = [
     path('', include(router.urls)),
     path('tag/<str:tag>/', Taglist),
-    path('category/<str:category>/', Categorylist)
+    path('category/<slug:category>/', Categorylist,), 
+    
 ]
