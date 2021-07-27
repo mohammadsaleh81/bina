@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     'taggit',
     'taggit_serializer',
 
+
     'blog.apps.BlogConfig',
+    
+    
 ]
 
 MIDDLEWARE = [
