@@ -15,8 +15,8 @@ class LawViweSet(ModelViewSet):
     def get_queryset(self):
         if self.request.user.is_superuser:
             return Law.objects.all()
-        else:
-            return Law.objects.filter(author=self.request.user)
+        #else:
+        #    return Law.objects.filter(author=self.request.user)
     
     filterset_fields = ["status", "author"]
     ordering_fields = ["created","status"]

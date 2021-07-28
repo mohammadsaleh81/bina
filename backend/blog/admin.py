@@ -38,12 +38,19 @@ class LawAdmin(admin.ModelAdmin):
         obj.author = request.user
         return super(LawAdmin, self).save_model(request, obj, form, change)
 
+    def get_queryset(self, request):
+        qs = super(LawAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(author=request.user)
 
-class LawTabularInline(admin.StackedInline):
-    model = Law
 
-class Useradmin(UserAdmin):
-    inlines = [LawTabularInline] 
+
+#class LawTabularInline(admin.StackedInline):
+#    model = Law
+
+#class Useradmin(UserAdmin):
+#    inlines = [LawTabularInline] 
 
 
 # Register your models here.    
@@ -51,7 +58,7 @@ site = MyAdminSite()
 site.register(Law, LawAdmin)
 site.register(Category)
 site.register(Group, GroupAdmin)
-site.register(User, Useradmin) 
+site.register(User, UserAdmin) 
 
 
 
