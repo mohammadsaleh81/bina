@@ -9,9 +9,15 @@ from rest_framework.response import Response
 from .models import Law, Category
 from .serializers import LawSeralizer, CategorySrializer
 
+
 class LawViweSet(ModelViewSet):
     serializer_class = LawSeralizer
-    queryset = Law.objects.all()
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return Law.objects.all()
+        else:
+            return Law.objects.filter(author=self.request.user)
+    
     filterset_fields = ["status", "author"]
     ordering_fields = ["created","status"]
     search_fields = [
