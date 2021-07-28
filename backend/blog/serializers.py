@@ -24,16 +24,12 @@ class LawSeralizer(TaggitSerializer, serializers.ModelSerializer):
 			"last_name": obj.author.last_name,
 		}
     
-    def safe_discription(self, obj):
-        text = obj.description
-        clean = re.compile('<.*?>')
-        return re.sub(clean, '',text)
-
+    
     
     
     tags = TagListSerializerField()
     author = serializers.SerializerMethodField('get_author')
-    description = serializers.SerializerMethodField('safe_discription')
+    
     category = CategorySrializer(read_only=True, many=True)
 
 
